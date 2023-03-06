@@ -8,7 +8,7 @@ let statsContainer = document.querySelector('.stats'),
     secondsContainer = document.querySelector('.count .count-down .seconds');
 
 window.onscroll = function () {
-    if (window.scrollY >= skillsContainer.offsetTop) {
+    if (window.scrollY >= skillsContainer.offsetTop-200) {
         skills.forEach(skill => {
             skill.style.width = skill.dataset.width;
         })
@@ -18,8 +18,6 @@ window.onscroll = function () {
         stats.forEach(stat => {
             let statData = stat.dataset.stat;
             let count = setInterval(() => {
-                console.log(statData);
-                console.log(stat.textContent);
                 if (Number(stat.textContent) < Number(statData)) {
                     stat.textContent++;
                 } else {
@@ -32,7 +30,7 @@ window.onscroll = function () {
 
 function countDown() {
     setInterval(() => {
-        let futureDate = new Date("2022-12-30 23:59:59").getTime(),
+        let futureDate = new Date("2023-12-30 23:59:59").getTime(),
         nowDate = new Date().getTime(),
         dateDifference = futureDate - nowDate,
         days = Math.floor(dateDifference / (1000 * 60 * 60 * 24)),
